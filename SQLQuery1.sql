@@ -1,0 +1,76 @@
+﻿CREATE DATABASE QUANLYKHOKINH
+GO
+USE QUANLYKHOKINH
+GO
+-- Bang thong ke kho
+-- Bang thong ke vat tu
+CREATE TABLE TENKHO
+(	
+	id INT IDENTITY PRIMARY KEY,
+	StorageName nvarchar(100) not null default N'Kho chưa có tên',
+	status nvarchar(100) not null default N'Chưa kết nối' -- chưa kết nối|| đã kết nối
+)
+GO
+
+CREATE TABLE THONGTINKHO
+(
+	id INT IDENTITY PRIMARY KEY,
+	StackName nvarchar(100),
+	idKho INT NOT NULL
+		
+	FOREIGN KEY (idKho) REFERENCES dbo.TENKHO(id)	
+		ON DELETE NO ACTION 
+
+)
+GO
+
+CREATE PROC USP_GetTableList
+AS SELECT * FROM dbo.TENKHO
+GO
+
+
+DECLARE @i INT = 1
+WHILE @i<=30
+BEGIN 
+	INSERT dbo.TENKHO (StorageName) VALUES ( N'Kho ' + CAST(@i AS nvarchar(100)))
+	SET @i = @i + 1
+END
+GO
+
+INSERT INTO dbo.THONGTINKHO (StackName , idKho)
+VALUES (N'5123453',1)
+INSERT INTO dbo.THONGTINKHO (StackName , idKho)
+VALUES (N'542123453',4)
+INSERT INTO dbo.THONGTINKHO (StackName , idKho)
+VALUES (N'56734123',3)
+INSERT INTO dbo.THONGTINKHO (StackName , idKho)
+VALUES (N'59684123',15)
+INSERT INTO dbo.THONGTINKHO (StackName , idKho)
+VALUES (N'59684123',15)
+INSERT INTO dbo.THONGTINKHO (StackName , idKho)
+VALUES (N'59684123',15)
+INSERT INTO dbo.THONGTINKHO (StackName , idKho)
+VALUES (N'59684123',15)
+INSERT INTO dbo.THONGTINKHO (StackName , idKho)
+VALUES (N'59684123',15)
+INSERT INTO dbo.THONGTINKHO (StackName , idKho)
+VALUES (N'59684123',15)
+INSERT INTO dbo.THONGTINKHO (StackName , idKho)
+VALUES (N'59684123',15)
+INSERT INTO dbo.THONGTINKHO (StackName , idKho)
+VALUES (N'59684123',15)
+INSERT INTO dbo.THONGTINKHO (StackName , idKho)
+VALUES (N'59684123',15)
+INSERT INTO dbo.THONGTINKHO (StackName , idKho)
+VALUES (N'59684123',15)
+INSERT INTO dbo.THONGTINKHO (StackName , idKho)
+VALUES (N'59684123',15)
+INSERT INTO dbo.THONGTINKHO (StackName , idKho)
+VALUES (N'59684123',15)
+INSERT INTO dbo.THONGTINKHO (StackName , idKho)
+VALUES (N'59684123',15)
+GO
+
+DELETE FROM dbo.THONGTINKHO where id=1
+GO
+SELECT tt.id,tt.StackName,t.StorageName FROM dbo.TENKHO AS t,dbo.THONGTINKHO AS tt WHERE tt.idKho = t.id AND t.id = 1

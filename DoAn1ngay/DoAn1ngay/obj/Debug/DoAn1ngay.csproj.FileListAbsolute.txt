@@ -1,0 +1,36 @@
+D:\OneDrive\Desktop\New folder\-n-1-ng-y\DoAn1ngay\DoAn1ngay\bin\Debug\DoAn1ngay.exe.config
+D:\OneDrive\Desktop\New folder\-n-1-ng-y\DoAn1ngay\DoAn1ngay\bin\Debug\DoAn1ngay.exe
+D:\OneDrive\Desktop\New folder\-n-1-ng-y\DoAn1ngay\DoAn1ngay\bin\Debug\DoAn1ngay.pdb
+D:\OneDrive\Desktop\New folder\-n-1-ng-y\DoAn1ngay\DoAn1ngay\obj\Debug\DoAn1ngay.csprojAssemblyReference.cache
+D:\OneDrive\Desktop\New folder\-n-1-ng-y\DoAn1ngay\DoAn1ngay\obj\Debug\DoAn1ngay.MainWindow.resources
+D:\OneDrive\Desktop\New folder\-n-1-ng-y\DoAn1ngay\DoAn1ngay\obj\Debug\DoAn1ngay.Properties.Resources.resources
+D:\OneDrive\Desktop\New folder\-n-1-ng-y\DoAn1ngay\DoAn1ngay\obj\Debug\DoAn1ngay.csproj.GenerateResource.cache
+D:\OneDrive\Desktop\New folder\-n-1-ng-y\DoAn1ngay\DoAn1ngay\obj\Debug\DoAn1ngay.csproj.CoreCompileInputs.cache
+D:\OneDrive\Desktop\New folder\-n-1-ng-y\DoAn1ngay\DoAn1ngay\obj\Debug\DoAn1ngay.exe
+D:\OneDrive\Desktop\New folder\-n-1-ng-y\DoAn1ngay\DoAn1ngay\obj\Debug\DoAn1ngay.pdb
+D:\OneDrive\Desktop\New folder\-n-1-ng-y\DoAn1ngay\DoAn1ngay\bin\Debug\NModbus.dll
+D:\OneDrive\Desktop\New folder\-n-1-ng-y\DoAn1ngay\DoAn1ngay\bin\Debug\NModbus.Serial.dll
+D:\OneDrive\Desktop\New folder\-n-1-ng-y\DoAn1ngay\DoAn1ngay\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\OneDrive\Desktop\New folder\-n-1-ng-y\DoAn1ngay\DoAn1ngay\bin\Debug\NModbus.xml
+D:\OneDrive\Desktop\New folder\-n-1-ng-y\DoAn1ngay\DoAn1ngay\bin\Debug\NModbus.Serial.pdb
+D:\OneDrive\Desktop\New folder\-n-1-ng-y\DoAn1ngay\DoAn1ngay\bin\Debug\NModbus.Serial.xml
+D:\OneDrive\Desktop\New folder\-n-1-ng-y\DoAn1ngay\DoAn1ngay\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\OneDrive\Desktop\New folder\-n-1-ng-y\DoAn1ngay\DoAn1ngay\obj\Debug\DoAn1ngay.csproj.CopyComplete
+D:\OneDrive\Desktop\DoanTotnghiep\-n-1-ng-y\DoAn1ngay\DoAn1ngay\bin\Debug\DoAn1ngay.exe.config
+D:\OneDrive\Desktop\DoanTotnghiep\-n-1-ng-y\DoAn1ngay\DoAn1ngay\bin\Debug\DoAn1ngay.exe
+D:\OneDrive\Desktop\DoanTotnghiep\-n-1-ng-y\DoAn1ngay\DoAn1ngay\bin\Debug\DoAn1ngay.pdb
+D:\OneDrive\Desktop\DoanTotnghiep\-n-1-ng-y\DoAn1ngay\DoAn1ngay\bin\Debug\NModbus.dll
+D:\OneDrive\Desktop\DoanTotnghiep\-n-1-ng-y\DoAn1ngay\DoAn1ngay\bin\Debug\NModbus.Serial.dll
+D:\OneDrive\Desktop\DoanTotnghiep\-n-1-ng-y\DoAn1ngay\DoAn1ngay\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\OneDrive\Desktop\DoanTotnghiep\-n-1-ng-y\DoAn1ngay\DoAn1ngay\bin\Debug\NModbus.xml
+D:\OneDrive\Desktop\DoanTotnghiep\-n-1-ng-y\DoAn1ngay\DoAn1ngay\bin\Debug\NModbus.Serial.pdb
+D:\OneDrive\Desktop\DoanTotnghiep\-n-1-ng-y\DoAn1ngay\DoAn1ngay\bin\Debug\NModbus.Serial.xml
+D:\OneDrive\Desktop\DoanTotnghiep\-n-1-ng-y\DoAn1ngay\DoAn1ngay\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\OneDrive\Desktop\DoanTotnghiep\-n-1-ng-y\DoAn1ngay\DoAn1ngay\obj\Debug\DoAn1ngay.csprojAssemblyReference.cache
+D:\OneDrive\Desktop\DoanTotnghiep\-n-1-ng-y\DoAn1ngay\DoAn1ngay\obj\Debug\DoAn1ngay.MainWindow.resources
+D:\OneDrive\Desktop\DoanTotnghiep\-n-1-ng-y\DoAn1ngay\DoAn1ngay\obj\Debug\DoAn1ngay.Properties.Resources.resources
+D:\OneDrive\Desktop\DoanTotnghiep\-n-1-ng-y\DoAn1ngay\DoAn1ngay\obj\Debug\DoAn1ngay.csproj.GenerateResource.cache
+D:\OneDrive\Desktop\DoanTotnghiep\-n-1-ng-y\DoAn1ngay\DoAn1ngay\obj\Debug\DoAn1ngay.csproj.CoreCompileInputs.cache
+D:\OneDrive\Desktop\DoanTotnghiep\-n-1-ng-y\DoAn1ngay\DoAn1ngay\obj\Debug\DoAn1ngay.csproj.CopyComplete
+D:\OneDrive\Desktop\DoanTotnghiep\-n-1-ng-y\DoAn1ngay\DoAn1ngay\obj\Debug\DoAn1ngay.exe
+D:\OneDrive\Desktop\DoanTotnghiep\-n-1-ng-y\DoAn1ngay\DoAn1ngay\obj\Debug\DoAn1ngay.pdb
