@@ -1,0 +1,18 @@
+CREATE DATABASE QUANLYKHOKINH
+GO
+USE QUANLYKHOKINH
+GO
+-- Bang thong ke kho
+-- Bang thong ke vat tu
+CREATE TABLE TENKHO
+(	
+	name nvarchar(100) not null default N'Kho chưa kết nối' PRIMARY KEY,
+	note nvarchar(100) not null default N'Trống' -- Trống|| có hàng || đã đầy
+)
+GO
+
+CREATE TABLE THONGTINKHO
+(
+	
+)
+GO
