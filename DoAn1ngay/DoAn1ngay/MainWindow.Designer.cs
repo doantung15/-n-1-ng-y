@@ -32,18 +32,6 @@ namespace DoAn1ngay
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txt_Kiemtra = new System.Windows.Forms.TextBox();
-            this.lblError = new System.Windows.Forms.Label();
-            this.txt_Receive = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtData = new System.Windows.Forms.TextBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btn_Transmit = new System.Windows.Forms.Button();
-            this.Txt_SlaveId = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnDisconnect = new System.Windows.Forms.Button();
             this.btn_Connect = new System.Windows.Forms.Button();
@@ -64,8 +52,6 @@ namespace DoAn1ngay
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -86,8 +72,6 @@ namespace DoAn1ngay
             // tabPage1
             // 
             this.tabPage1.CausesValidation = false;
-            this.tabPage1.Controls.Add(this.groupBox3);
-            this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -97,127 +81,6 @@ namespace DoAn1ngay
             this.tabPage1.Text = "Connect";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.txt_Kiemtra);
-            this.groupBox3.Controls.Add(this.lblError);
-            this.groupBox3.Controls.Add(this.txt_Receive);
-            this.groupBox3.Location = new System.Drawing.Point(301, 135);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(287, 302);
-            this.groupBox3.TabIndex = 6;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Receive";
-            // 
-            // txt_Kiemtra
-            // 
-            this.txt_Kiemtra.AllowDrop = true;
-            this.txt_Kiemtra.Location = new System.Drawing.Point(6, 167);
-            this.txt_Kiemtra.Multiline = true;
-            this.txt_Kiemtra.Name = "txt_Kiemtra";
-            this.txt_Kiemtra.ReadOnly = true;
-            this.txt_Kiemtra.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_Kiemtra.Size = new System.Drawing.Size(275, 129);
-            this.txt_Kiemtra.TabIndex = 2;
-            // 
-            // lblError
-            // 
-            this.lblError.AutoSize = true;
-            this.lblError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblError.Location = new System.Drawing.Point(18, 227);
-            this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(0, 20);
-            this.lblError.TabIndex = 1;
-            // 
-            // txt_Receive
-            // 
-            this.txt_Receive.Location = new System.Drawing.Point(6, 27);
-            this.txt_Receive.Multiline = true;
-            this.txt_Receive.Name = "txt_Receive";
-            this.txt_Receive.Size = new System.Drawing.Size(275, 117);
-            this.txt_Receive.TabIndex = 0;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.txtData);
-            this.groupBox2.Controls.Add(this.txtAddress);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.btn_Transmit);
-            this.groupBox2.Controls.Add(this.Txt_SlaveId);
-            this.groupBox2.Location = new System.Drawing.Point(6, 134);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(276, 304);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Transmit";
-            // 
-            // txtData
-            // 
-            this.txtData.AllowDrop = true;
-            this.txtData.Location = new System.Drawing.Point(145, 125);
-            this.txtData.Multiline = true;
-            this.txtData.Name = "txtData";
-            this.txtData.Size = new System.Drawing.Size(86, 22);
-            this.txtData.TabIndex = 6;
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.Location = new System.Drawing.Point(145, 86);
-            this.txtAddress.Multiline = true;
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(86, 22);
-            this.txtAddress.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(8, 125);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 20);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Dữ liệu";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(8, 84);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 20);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Số thanh ghi";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(8, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Địa chỉ";
-            // 
-            // btn_Transmit
-            // 
-            this.btn_Transmit.Location = new System.Drawing.Point(26, 230);
-            this.btn_Transmit.Name = "btn_Transmit";
-            this.btn_Transmit.Size = new System.Drawing.Size(86, 38);
-            this.btn_Transmit.TabIndex = 1;
-            this.btn_Transmit.Text = "OK";
-            this.btn_Transmit.UseVisualStyleBackColor = true;
-            this.btn_Transmit.Click += new System.EventHandler(this.btn_Transmit_Click);
-            // 
-            // Txt_SlaveId
-            // 
-            this.Txt_SlaveId.Location = new System.Drawing.Point(145, 39);
-            this.Txt_SlaveId.Multiline = true;
-            this.Txt_SlaveId.Name = "Txt_SlaveId";
-            this.Txt_SlaveId.Size = new System.Drawing.Size(86, 22);
-            this.Txt_SlaveId.TabIndex = 0;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnDisconnect);
@@ -226,7 +89,7 @@ namespace DoAn1ngay
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(577, 123);
+            this.groupBox1.Size = new System.Drawing.Size(751, 123);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Coneect";
@@ -384,7 +247,7 @@ namespace DoAn1ngay
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 30000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // MainWindow
@@ -399,10 +262,6 @@ namespace DoAn1ngay
             this.Text = "MainForm";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -418,24 +277,13 @@ namespace DoAn1ngay
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbx_ID;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txt_Receive;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox Txt_SlaveId;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnDisconnect;
         private System.Windows.Forms.Button btn_Connect;
-        private System.Windows.Forms.Button btn_Transmit;
         private System.Windows.Forms.Button btnXuatkho;
         private System.Windows.Forms.Button btnNhapkho;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label lblError;
-        private System.Windows.Forms.TextBox txtData;
-        private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.ProgressBar progressBar1;
@@ -444,7 +292,6 @@ namespace DoAn1ngay
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.TextBox txt_Kiemtra;
     }
 }
 

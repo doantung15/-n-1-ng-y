@@ -18,10 +18,12 @@ namespace Modbus
     {
         
         IModbusMaster master;
-        
+        IModbusRtuTransport RTUtransport;
+        IModbusSerialMaster serialMaster;
 
         StringBuilder data = new StringBuilder();
         StringBuilder check = new StringBuilder();
+        StringBuilder _check = new StringBuilder();
         Thread thread;
         string Reconnect;
         SerialPort serialPort1 = new SerialPort();
@@ -90,49 +92,44 @@ namespace Modbus
         {
 
             serialPort1.PortName = cbx_ID.Text;
-            serialPort1.BaudRate = 9600;
+            serialPort1.BaudRate = 38400;
             serialPort1.DataBits = 8;
             serialPort1.Parity = Parity.None;
             serialPort1.StopBits = StopBits.One;
             serialPort1.Open();
-            serialPort1.ReadTimeout = 5000;
-            serialPort1.WriteTimeout = 5000;
+            serialPort1.ReadTimeout = 50;
+            serialPort1.WriteTimeout = 50;
 
             var factory = new ModbusFactory();
-
+            //RTUtransport = factory.CreateRtuTransport(serialPort1);
+            //serialMaster = factory.CreateMaster(RTUtransport);
             master = factory.CreateRtuMaster(serialPort1);
             
         }
 
-        public void new_opencomport()
+        public void new_opencomport(byte i)
         {
-            try
+            this.Invoke(new Action(() =>
             {
-                using (SerialPort port = new SerialPort(cbx_ID.Text))
+                var watch = new System.Diagnostics.Stopwatch();
+                watch.Start();
+                try
                 {
-                    // configure serial port
-                    port.BaudRate = 9600;
-                    port.DataBits = 8;
-                    port.Parity = Parity.None;
-                    port.StopBits = StopBits.One;
-                    port.Open();
-                    port.ReadTimeout = 100;
-                    port.WriteTimeout = 100;
-                    var factory = new ModbusFactory();
-                    IModbusMaster master = factory.CreateRtuMaster(port);
+                    master.WriteSingleCoil(i, 0, true);
 
-                    byte slaveId = 10;
-                    ushort startAddress = 100;
-                    ushort[] registers = new ushort[] { 1, 2, 3 };
-
-                    // write three registers
-                    master.WriteMultipleRegisters(slaveId, startAddress, registers);
                 }
-            }
-            catch(Exception err)
-            {
-                MessageBox.Show(err.ToString());
-            }
+                catch (Exception)
+                {
+                    check.Append(i + "\r\n");
+                }
+
+                txt_Kiemtra.Text = check.ToString();
+                watch.Stop();
+
+                _check.Append($"Execution Time: " + watch.ElapsedMilliseconds + " ms" + "\r\n");
+                txtbtn1.Text = _check.ToString();
+
+            }));
         }
 
         private void OpencomportWhenDisconnect()
@@ -145,8 +142,8 @@ namespace Modbus
                 serialPort1.Parity = Parity.None;
                 serialPort1.StopBits = StopBits.One;
                 serialPort1.Open();
-                serialPort1.ReadTimeout = 5000;
-                serialPort1.WriteTimeout = 5000;
+                serialPort1.ReadTimeout = 1000;
+                serialPort1.WriteTimeout = 1000;
 
                 var factory = new ModbusFactory();
                 master = factory.CreateRtuMaster(serialPort1);
@@ -190,14 +187,10 @@ namespace Modbus
         void aa()
         {
             receive(10, 0, 11);
-             
-
-
-
         }
         private void btn_Connect_Click(object sender, EventArgs e)
         {
-            
+          
             try
             {
                 Opencomport();
@@ -357,7 +350,7 @@ namespace Modbus
 
         private void btn_Slave_Click(object sender, EventArgs e)
         {
-            new_opencomport();
+            
         }
         #endregion
 
@@ -368,7 +361,46 @@ namespace Modbus
 
         private void btnHamThu_Click(object sender, EventArgs e)
         {
-            check_task_Connection_Timeout();
+            for (int i = 1; i <= 30; i++)
+            {
+                int temp = i;
+                Thread t = new Thread(() =>
+                {
+                    new_opencomport(Convert.ToByte(temp));
+
+                });
+                t.IsBackground = true;
+                t.Start();
+            }
+
+            MessageBox.Show("Done");
+            //for(int i = 1; i < 30; i++)
+            //{
+            //    int temp = i;
+            //    Thread t = new Thread(() =>
+            //    {
+            //        DemoThread("Thread" + temp);
+
+            //    });
+            //    //t.IsBackground = true;
+            //    t.Start();
+            //}
         }
+
+        void DemoThread(string threadIndex)
+        {
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
+            for (int i = 0; i < 1; i++)
+            {                             
+                check.Append( threadIndex + i + "\r\n");
+                txtbtn2.Text = check.ToString();
+            }
+            watch.Stop();
+            _check.Append($"Execution Time: " + watch.ElapsedMilliseconds + " ms" + "\r\n");
+            txtbtn1.Text = _check.ToString();
+        }
+
+       
     }
 }

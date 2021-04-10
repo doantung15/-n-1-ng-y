@@ -21,31 +21,30 @@ namespace DoAn1ngay
         #region register        
        
         IModbusMaster master;
-        StringBuilder data = new StringBuilder();
-        StringBuilder count = new StringBuilder();
-        Thread thread;
+        StringBuilder data = new StringBuilder();      
+        
         string Reconnect;
+
         SerialPort serialPort1 = new SerialPort();
+
         private bool Isconnected = false;        
+
+
         #endregion
 
         #region Method
 
         public MainWindow()
         {
-            InitializeComponent();
-            Query_X();
+            InitializeComponent();            
             LoadStorage();
             Control.CheckForIllegalCrossThreadCalls = false;
             cbx_ID.Items.AddRange(SerialPort.GetPortNames());
-        }
-        void Query_X()
-        {
-                   
-        }
+        }        
 
         void LoadStorage() 
         {
+
             flpStorage.Controls.Clear();
             List<DoAn1ngay.DTO.Storage> storagesList = DoAn1ngay.DAO.StorageDAO.Instance.LoadTableList();
             foreach(Storage item in storagesList)
@@ -57,7 +56,7 @@ namespace DoAn1ngay
 
                 switch (item.Status) 
                 {
-                    case "đã kết nối":
+                    case "Đã kết nối":
                         btn.BackColor = Color.LightGreen;
                         break;
                     default:
@@ -65,8 +64,7 @@ namespace DoAn1ngay
                         break;
                 }
                 flpStorage.Controls.Add(btn);
-            }
-        
+            }        
         }
 
         void ShowStorage(int id)
@@ -85,9 +83,41 @@ namespace DoAn1ngay
                 progressBar1.Value++;
             }
         }
-        
 
-        
+        public void Check_Connection()
+        {            
+            for (int i = 1; i <= 30; i++)
+            {
+                int temp = i;
+                Thread t = new Thread(() =>
+                 {
+                     this.Invoke(new Action(() =>
+                     {
+                         try
+                         {
+                             master.WriteSingleCoil(Convert.ToByte(temp), 0, true);
+
+                             string Status = "Đã kết nối";
+                             StorageInfoDAO.Instance.Update_Storage(temp, Status);
+                            
+                         }
+                         catch (Exception)
+                         {
+                             string Status = "Chưa kết nối";
+                             StorageInfoDAO.Instance.Update_Storage(temp, Status);
+                             
+                         }
+                     }));
+                 });
+                t.IsBackground = true;
+                t.Start();
+                if (i == 30)
+                {                    
+                    t.Abort();                    
+                }     
+            }
+            
+        }
 
         private void Opencomport()
         {
@@ -98,8 +128,8 @@ namespace DoAn1ngay
             serialPort1.Parity = Parity.None;
             serialPort1.StopBits = StopBits.One;
             serialPort1.Open();
-            serialPort1.ReadTimeout = 5000;
-            serialPort1.WriteTimeout = 5000;
+            serialPort1.ReadTimeout = 50;
+            serialPort1.WriteTimeout = 50;
 
             var factory = new ModbusFactory();
             master = factory.CreateRtuMaster(serialPort1);
@@ -116,15 +146,15 @@ namespace DoAn1ngay
                 serialPort1.Parity = Parity.None;
                 serialPort1.StopBits = StopBits.One;
                 serialPort1.Open();
-                serialPort1.ReadTimeout = 5000;
-                serialPort1.WriteTimeout = 5000;
+                serialPort1.ReadTimeout = 50;
+                serialPort1.WriteTimeout = 50;
 
                 var factory = new ModbusFactory();
                 master = factory.CreateRtuMaster(serialPort1);
             }
             catch
             {
-                lblError.Text = "";
+                //lỗi đường truyền
             }
         }
 
@@ -148,96 +178,17 @@ namespace DoAn1ngay
                 for (int i = 0; i < numRegisters; i++)
                 {
                     data.Append($"Register {startAddress + i}={registers[i]}" + "\r\n");
-                }
-                txt_Receive.Text = Convert.ToString(data);
+                }                
+                // hiển thị thông tin truyền nhận
             }
             catch
             {
-                lblError.Text = "Lỗi rồi, đường truyền có vấn đề";
+                // lỗi đường truyền
                 Isconnected = false;
             }
         }
-
-        private void check_id_connection(byte slaveId, ushort startReadAddress, ushort numRegisters,ushort startWriteAddress,ushort[] _numRegister) 
-        {
-            try
-            {
-                ushort[] registers = master.ReadWriteMultipleRegisters(slaveId, startReadAddress, numRegisters,startWriteAddress,_numRegister);
-                data.Clear();
-                for (int i = 0; i < numRegisters; i++)
-                {
-                    data.Append($"Register {startReadAddress + i}={registers[i]}" + "\r\n");
-                }
-                txt_Receive.Text = Convert.ToString(data);
-            }
-            catch
-            {
-                lblError.Text = "Lỗi rồi, đường truyền có vấn đề";
-                Isconnected = false;
-            }
-        }
-
-        void aa()
-        {
-
-            receive(10, 0, 11);
-
-        }
-
-        
-        #endregion
-
-        #region events
-        private void btn_Connect_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Opencomport();
-                Reconnect = cbx_ID.Text;
-                Isconnected = true;
-                timer1.Enabled = true;
-
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.ToString());
-                Isconnected = false;
-            }
-        }
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            thread = new Thread(aa)
-            {
-                IsBackground = true
-            };
-            thread.Start();
-            if (Isconnected == false)
-            {
-                OpencomportWhenDisconnect();
-
-            }
-        }
-        private void btnDisconnect_Click(object sender, EventArgs e)
-        {
-            serialPort1.Close();
-            timer1.Stop();
-            thread.Abort();
-        }
-        private void btn_Transmit_Click(object sender, EventArgs e)
-        {
-            byte a = Convert.ToByte(Txt_SlaveId.Text);
-            ushort addr = Convert.ToUInt16(txtAddress.Text);
-            string ox = Convert.ToString(txtData.Text);
-            ox = ox.Replace(" ", "");
-            string[] mx = ox.Split(';');
-            ushort[] bbb = new ushort[mx.Length];
-            for (int i = 0; i < mx.Length; i++)
-            {
-                bbb[i] = Convert.ToUInt16(mx[i]);
-            }
-            transmit(a, addr, bbb);
-        }
-        private void btnXuatkho_Click(object sender, EventArgs e)
+             
+        private void Xuat_Kho()
         {
             var fileContent = string.Empty;
             var filePath = string.Empty;
@@ -262,10 +213,14 @@ namespace DoAn1ngay
                     string[] tach = _data.Split('\n');
 
                     string[] _Data = new string[tach.Length];
-                    for (int i = 0; i < tach.Length; i++)
-                    {
-                        _Data[i] = tach[i].Substring(3, 2);
+
+
+                   
+                    for (int i = 1; i < tach.Length; i++)
+                    {                       
+                        _Data[i] = tach[i].Substring(5, 2);
                     }
+
 
                     KhoHangToByte khoHangToByte = new KhoHangToByte();
                     khoHangToByte.MaHoa(_Data);
@@ -280,13 +235,11 @@ namespace DoAn1ngay
                         MessageBox.Show("ok");
                     }
                 }
-
-
             }
         }
 
-        private void btnNhapkho_Click(object sender, EventArgs e)
-        {            
+        private void Nhap_Kho()
+        {
             var fileContent = string.Empty;
             var filePath = string.Empty;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -317,10 +270,84 @@ namespace DoAn1ngay
                     }
                 }
             }
+        }
 
-            
-            
 
+
+        #endregion
+
+
+
+        #region events
+        private void btn_Connect_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Opencomport();
+                Reconnect = cbx_ID.Text;
+                Isconnected = true;
+
+                Check_Connection();
+                LoadStorage();
+                timer1.Enabled = true;
+
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+                Isconnected = false;
+            }
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Thread k = new Thread(() =>
+            {
+                this.Invoke(new Action(() =>
+                {
+                    Check_Connection();
+                }));
+                
+            });
+            k.IsBackground = true;
+            k.Start();
+            LoadStorage();
+            k.Abort();
+
+            if (Isconnected == false)
+            {
+                OpencomportWhenDisconnect();
+            }
+            
+        }
+        private void btnDisconnect_Click(object sender, EventArgs e)
+        {
+            serialPort1.Close();
+            timer1.Stop();            
+        }
+        private void btn_Transmit_Click(object sender, EventArgs e)
+        {
+            // hàm này dùng để truyền tay dữ liệu
+
+            //byte a = Convert.ToByte(Txt_SlaveId.Text);
+            //ushort addr = Convert.ToUInt16(txtAddress.Text);
+            //string ox = Convert.ToString(txtData.Text);
+            //ox = ox.Replace(" ", "");
+            //string[] mx = ox.Split(';');
+            //ushort[] bbb = new ushort[mx.Length];
+            //for (int i = 0; i < mx.Length; i++)
+            //{
+            //    bbb[i] = Convert.ToUInt16(mx[i]);
+            //}
+            //transmit(a, addr, bbb);
+        }
+        private void btnXuatkho_Click(object sender, EventArgs e)
+        {
+            Xuat_Kho();
+        }
+
+        private void btnNhapkho_Click(object sender, EventArgs e)
+        {
+            Nhap_Kho();
         }
 
         private void Btn_Click(object sender, EventArgs e)

@@ -53,6 +53,7 @@ namespace Modbus
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnHamThu = new System.Windows.Forms.Button();
             this.txtbtn1 = new System.Windows.Forms.TextBox();
+            this.txtbtn2 = new System.Windows.Forms.TextBox();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -244,7 +245,7 @@ namespace Modbus
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // btnRefresh
@@ -259,28 +260,38 @@ namespace Modbus
             // 
             // btnHamThu
             // 
-            this.btnHamThu.Location = new System.Drawing.Point(956, 263);
+            this.btnHamThu.Location = new System.Drawing.Point(1065, 161);
             this.btnHamThu.Name = "btnHamThu";
-            this.btnHamThu.Size = new System.Drawing.Size(138, 69);
+            this.btnHamThu.Size = new System.Drawing.Size(138, 51);
             this.btnHamThu.TabIndex = 11;
-            this.btnHamThu.Text = "button1";
+            this.btnHamThu.Text = "Hamthu";
             this.btnHamThu.UseVisualStyleBackColor = true;
             this.btnHamThu.Click += new System.EventHandler(this.btnHamThu_Click);
             // 
             // txtbtn1
             // 
-            this.txtbtn1.Location = new System.Drawing.Point(870, 372);
+            this.txtbtn1.Location = new System.Drawing.Point(707, 161);
             this.txtbtn1.Multiline = true;
             this.txtbtn1.Name = "txtbtn1";
             this.txtbtn1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtbtn1.Size = new System.Drawing.Size(316, 275);
             this.txtbtn1.TabIndex = 12;
             // 
+            // txtbtn2
+            // 
+            this.txtbtn2.Location = new System.Drawing.Point(709, 448);
+            this.txtbtn2.Multiline = true;
+            this.txtbtn2.Name = "txtbtn2";
+            this.txtbtn2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtbtn2.Size = new System.Drawing.Size(313, 205);
+            this.txtbtn2.TabIndex = 13;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 659);
+            this.Controls.Add(this.txtbtn2);
             this.Controls.Add(this.txtbtn1);
             this.Controls.Add(this.btnHamThu);
             this.Controls.Add(this.btnRefresh);
@@ -326,6 +337,7 @@ namespace Modbus
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btnHamThu;
         private System.Windows.Forms.TextBox txtbtn1;
+        private System.Windows.Forms.TextBox txtbtn2;
     }
 }
 

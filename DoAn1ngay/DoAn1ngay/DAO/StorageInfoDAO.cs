@@ -35,5 +35,12 @@ namespace DoAn1ngay.DAO
 
             return listStorageInfo;
         }
+
+        public bool Update_Storage(int idStorage,string Trangthai)
+        {
+            string query = string.Format("UPDATE dbo.TENKHO SET status=N'{0}' WHERE id ={1}",Trangthai,idStorage);
+            int result = Dataprovider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
     }
 }
